@@ -32,10 +32,20 @@ window.addEventListener("DOMContentLoaded", () => {
       a: 3,
     },
     {
-      q: "What is the capital of Australia",
+      q: "What is the capital of Australia?",
       o: ["Sydney", "Canberra", "Melbourne", "Perth"],
       a: 1,
     },
+    {
+      q: "How many colors are there in a rainbow?",
+      o: ["Seven", "Eight", "Three", "Six"],
+      a: 1,
+    },
+    {
+      q: "What do you call a type of shape that has five sides?",
+      o: ["Square", "Octagon", "Hexagon", "Pentagon"],
+      a: 4,
+    }
   ];
 
   // function to Display the quiz questions and answers from the object
