@@ -36,15 +36,16 @@ window.addEventListener("DOMContentLoaded", () => {
       o: ["Sydney", "Canberra", "Melbourne", "Perth"],
       a: 1,
     },
+    //1. Add 2 more questions to the app
     {
       q: "How many colors are there in a rainbow?",
       o: ["Seven", "Eight", "Three", "Six"],
-      a: 1,
+      a: 0,
     },
     {
       q: "What do you call a type of shape that has five sides?",
       o: ["Square", "Octagon", "Hexagon", "Pentagon"],
-      a: 4,
+      a: 3,
     }
   ];
 
@@ -78,15 +79,61 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+          liElement.style.backgroundColor = "#e4f5d3";
         }
 
-        if (radioElement.checked) {
-          // code for task 1 goes here
+        if (radioElement.checked && i == quizItem.a) {
+          // code for task 2 goes here
+          //2. Calculate the score as the total of the number of correct answers
+          ++score;
         }
       }
     });
+
+    document.querySelector("#score").innerHTML = ` Your Score is: ${score}/${quizArray.length}`
   };
 
   // call the displayQuiz function
   displayQuiz();
+
+  //3.Add Submit button event Listener
+
+  function submitAnswers() {
+    clearInterval(refresh);
+    clearTimeout(timeout);
+
+    calculateScore();
+  }
+  document.querySelector("#btnSubmit").addEventListener("click", submitAnswers);
+
+  //4. Reload the page when the reset button is clicked 
+  document.querySelector("#btnReset").addEventListener("click", () => { window.location.reload(); });
+
+  //5. Add a countdown timer
+
+  let totalSeconds = 10;
+  var refresh = setInterval(refreshTimer, 1000);
+  var timeout = setTimeout(timeRunOut, totalSeconds * 1000);
+
+  function refreshTimer() {
+    var timer = document.querySelector("#time");
+    if (totalSeconds > 10)
+      timer.innerHTML = `0:${--totalSeconds}`;
+    else {
+      timer.innerHTML = `0:0${--totalSeconds}`;
+      timer.style.backgroundColor = "red";
+      timer.style.color = "yellow";
+    }
+  }
+
+  function timeRunOut() {
+    submitAnswers();
+  }
+
 });
+
+
+
+
+
+
