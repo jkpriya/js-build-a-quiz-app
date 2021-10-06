@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //5. Add a countdown timer
 
-  let totalSeconds = 10;
+  let totalSeconds = 60;
   var refresh = setInterval(refreshTimer, 1000);
   var timeout = setTimeout(timeRunOut, totalSeconds * 1000);
 
