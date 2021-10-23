@@ -1,25 +1,10 @@
-/* ***************************
-  JWD JavaScript Assessment
-  This code is unfinished. You will need to study it to figure out what it does. Then you will need to use this and your own code, to finish the app. 
-  
-  The tasks you need to do are below.
-    TASKS TODO:
-      1. Add 2 more questions to the app (each question must have 4 options). 
-      2. Calculate the score as the total of the number of correct answers
-      3. Add an Event listener for the submit button, which will display the score and highlight the correct answers when the button is clicked. Study the code in the function calculateScore() to help you.
-      4. Reload the page when the reset button is clicked (hint: search window.location)
-      5. Add a countdown timer - when the time is up, end the quiz, display the score and highlight the correct answers
-*************************** */
-
 window.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector("#start");
   start.addEventListener("click", function (e) {
     document.querySelector("#quizBlock").style.display = "block";
     start.style.display = "none";
   });
-  // quizArray QUESTIONS & ANSWERS
-  // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
-  // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
+  
   const quizArray = [
     {
       q: "Which is the third planet from the sun?",
@@ -46,7 +31,32 @@ window.addEventListener("DOMContentLoaded", () => {
       q: "What do you call a type of shape that has five sides?",
       o: ["Square", "Octagon", "Hexagon", "Pentagon"],
       a: 3,
-    }
+    },
+    {
+      q: "What colors are the stars on the American flag?",
+      o: ["White", "Orange", "Red", "Blue"],
+      a: 0,
+    },
+    {
+      q: "Where is the Great Pyramid of Giza?",
+      o: ["Australia", "Egypt", "Hungary", "Italy"],
+      a: 1,
+    },
+    {
+      q: "In the nursery rhyme, who sat on a wall before having a great fall?",
+      o: ["Jack and Jill", "Johnny Johnny", "Rain Rain", "Humpty Dumpty"],
+      a: 3,
+    },
+    {
+      q: "Who wrote Hamlet?",
+      o: ["Einstein", "Roald Dahl", "Shakespeare", "Ptolemy"],
+      a: 2,
+    },
+    {
+      q: " Which is the fastest land animal",
+      o: ["Monkey", "Tiger", "Lion", "cheetah"],
+      a: 3,
+    },
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -82,10 +92,14 @@ window.addEventListener("DOMContentLoaded", () => {
           liElement.style.backgroundColor = "#e4f5d3";
         }
 
-        if (radioElement.checked && i == quizItem.a) {
+        if (radioElement.checked) {
           // code for task 2 goes here
           //2. Calculate the score as the total of the number of correct answers
-          ++score;
+          if(i == quizItem.a)
+            ++score;
+          else
+            liElement.style.backgroundColor = "#f7dfda";
+
         }
       }
     });
